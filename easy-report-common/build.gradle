@@ -1,0 +1,65 @@
+
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.2.13.RELEASE'
+    // Assuming Spring Boot version that matches parent POM
+}
+
+group 'com.joy.easyreport'
+version '1.0-SNAPSHOT'
+description = 'common通用工具'
+
+
+dependencies {
+    // Spring framework
+    compile 'org.springframework:spring-context-support:5.2.12.RELEASE'
+    compile 'org.springframework:spring-web:5.2.12.RELEASE'
+    compile 'org.springframework.boot:spring-boot-starter-security:2.2.13.RELEASE'
+
+    // PageHelper
+    compile 'com.github.pagehelper:pagehelper-spring-boot-starter:1.3.1'
+
+    // Validation
+    compile 'javax.validation:validation-api:2.0.1.Final'
+
+    // Commons
+    compile 'org.apache.commons:commons-lang3:3.9'
+    compile 'commons-io:commons-io:2.11.0'
+    compile 'commons-fileupload:commons-fileupload:1.4'
+    compile 'org.apache.commons:commons-pool2:2.7.0'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+    // HuTool
+    compile 'cn.hutool:hutool-all:5.7.11'
+
+    // JSON
+    compile 'com.fasterxml.jackson.core:jackson-databind'
+    compile 'com.alibaba:fastjson:1.2.78'
+
+    // Excel
+    compile 'org.apache.poi:poi-ooxml:4.1.2'
+
+    // YAML
+    compile 'org.yaml:snakeyaml:1.25'
+
+    // JWT
+    compile 'io.jsonwebtoken:jjwt:0.9.1'
+
+    // Redis
+    compile 'org.springframework.boot:spring-boot-starter-data-redis:2.1.12.RELEASE'
+
+    // User Agent
+    compile 'eu.bitwalker:UserAgentUtils:1.21'
+
+    // Servlet
+    compileOnly 'javax.servlet:javax.servlet-api:4.0.1'
+
+    // MyBatis Plus
+    compile 'com.baomidou:mybatis-plus-boot-starter:3.4.3.3'
+    compile 'com.baomidou:mybatis-plus-extension:3.4.3.3'
+    compile 'com.baomidou:dynamic-datasource-spring-boot-starter:3.4.1'
+}

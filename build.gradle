@@ -1,0 +1,16 @@
+
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+group 'com.joy.easyreport'
+version '1.0-SNAPSHOT'
+
+
+
+repositories {
+    maven { url 'https://maven.aliyun.com/nexus/content/groups/public/' }
+}
+configurations.all {
+    resolutionStrategy.cacheChangingModulesFor 0, 'seconds'
+}

@@ -1,0 +1,40 @@
+
+plugins {
+    id 'java'
+    id 'org.springframework.boot' version '2.2.13.RELEASE' // Matches Spring Boot with Maven parent version 3.7.0
+}
+
+group 'com.joy.easyreport'
+version '1.0-SNAPSHOT'
+
+description = 'framework框架核心'
+
+dependencies {
+    // 系统模块
+    compile project(":easy-report-system")
+    // SpringBoot Web容器
+    compile 'org.springframework.boot:spring-boot-starter-web:2.2.13.RELEASE'
+   // compile 'com.fasterxml.jackson.core:jackson-databind:2.10.5.1'
+    // SpringBoot 拦截器
+    compile 'org.springframework.boot:spring-boot-starter-aop:2.2.13.RELEASE'
+
+    // 阿里数据库连接池
+    compile 'com.alibaba:druid-spring-boot-starter:1.2.6' // Version might need adjustment
+
+    // 验证码
+    compile('com.github.penggle:kaptcha:2.3.2') {
+        exclude group: 'javax.servlet', module: 'javax.servlet-api'
+    }
+    // 获取系统信息
+    compile 'com.github.oshi:oshi-core:5.8.0' // Version might need adjustment
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+}
+configurations.all {
+    resolutionStrategy {
+        // 使用更高优先级的强制声明
+        force 'com.fasterxml.jackson.core:jackson-databind:2.10.5.1' // 或你想要的版本
+    }
+}

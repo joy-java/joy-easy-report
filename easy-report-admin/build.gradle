@@ -1,0 +1,72 @@
+plugins {
+    id 'java'
+    id 'maven'
+    id 'org.springframework.boot' version '2.2.13.RELEASE'
+}
+
+apply plugin: 'war'
+apply plugin: 'io.spring.dependency-management'
+group 'com.joy.easyreport'
+version '1.0-SNAPSHOT'
+
+description = 'web服务入口'
+
+sourceCompatibility = '1.8'
+targetCompatibility = '1.8'
+
+/*configurations {
+    compile.exclude module: 'swagger-models'
+}*/
+
+
+dependencies {
+
+    // Project modules
+    compile project(":easy-report-service")
+    compile project(":easy-report-generator")
+
+    // Spring Boot
+    compile platform('org.springframework.boot:spring-boot-dependencies:2.1.1.RELEASE')
+    // SpringBoot Web容器
+    compile 'org.springframework.boot:spring-boot-starter-web:2.2.13.RELEASE'
+
+    // SpringBoot 拦截器
+    compile 'org.springframework.boot:spring-boot-starter-aop:2.2.13.RELEASE'
+    // Swagger
+    compile 'io.springfox:springfox-boot-starter:3.0.0'
+
+    // 手动添加 1.6.2 版本
+    implementation 'io.swagger:swagger-models:1.6.2'
+    compile 'io.swagger:swagger-annotations:1.6.2'
+
+    // MySQL
+    compile 'mysql:mysql-connector-java'
+
+
+    // Provided dependencies
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+
+}
+
+
+bootJar {
+    mainClassName = 'com.sdyx.easyreport.EasyReportApplication'
+}
+archivesBaseName="ROOT"
+
+task clearPublish(type: Delete) {
+    delete '../build/libs/'
+}
+task copyPublishWar(type: Copy) {
+    from 'build/libs/ROOT-'+version+'.war'
+    into '../build/libs/'
+    rename{
+        'ROOT.war'
+    }
+}
+
+task publish(type: Copy, dependsOn: [build,clearPublish, copyPublishWar])

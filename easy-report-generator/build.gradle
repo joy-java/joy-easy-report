@@ -1,0 +1,25 @@
+
+plugins {
+    id 'java'
+}
+
+
+group 'com.joy.easyreport'
+version '1.0-SNAPSHOT'
+
+description = 'generator代码生成'
+
+dependencies {
+    // 通用工具
+    compile project(":easy-report-common")
+    // velocity代码生成使用模板
+    compile 'org.apache.velocity:velocity:1.7'
+
+    // collections工具类
+    compile 'commons-collections:commons-collections:3.2.2'
+
+    compile 'javax.servlet:javax.servlet-api:4.0.1'
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+}

@@ -1,0 +1,16 @@
+plugins {
+    id 'java'
+}
+
+group 'com.joy.easyreport'
+version '1.0-SNAPSHOT'
+
+description = 'easy-report-service'
+
+
+dependencies {
+    compile project(":easy-report-framework")
+    // Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.22'
+    annotationProcessor 'org.projectlombok:lombok:1.18.22'
+}
